@@ -13,6 +13,99 @@ subscriptions:
   non_prod: "c95f7219-0fbc-4550-bcbb-14d38b9af10b"
   prod: "68d2caca-8b6d-48d1-9cb5-5345c3ac34d1"
 
+network:
+  non_prod:
+    address_space: ["10.0.0.0/16"]
+    subnets:
+      app:
+        address_prefixes: ["10.0.1.0/24"]
+        service_endpoints: ["Microsoft.Web"]
+        delegations:
+          - name: "app-service-delegation"
+            service_delegation:
+              name: "Microsoft.Web/serverFarms"
+
+      data:
+        address_prefixes: ["10.0.2.0/24"]
+        service_endpoints: ["Microsoft.Sql", "Microsoft.Storage"]
+
+  prod:
+    address_space: ["10.1.0.0/16"]
+    subnets:
+      app:
+        address_prefixes: ["10.1.1.0/24"]
+        service_endpoints: ["Microsoft.Web"]
+        private_endpoint_network_policies: "NetworkSecurityGroupEnabled"
+
+      data:
+        address_prefixes: ["10.1.2.0/24"]
+        service_endpoints:
+          ["Microsoft.Sql", "Microsoft.Storage", "Microsoft.KeyVault"]
+
+security:
+  network_security_groups:
+    non_prod:
+      app:
+        rules:
+          - name: "AllowHTTPSInbound"
+            priority: 100
+            direction: "Inbound"
+            access: "Allow"
+            protocol: "Tcp"
+            source_address_prefix: "*"
+            destination_port_range: "443"
+            destination_address_prefix: "VirtualNetwork"
+
+          - name: "AllowSshInbound"
+            priority: 110
+            direction: "Inbound"
+            access: "Allow"
+            protocol: "Tcp"
+            source_address_prefix: "VirtualNetwork"
+            destination_port_range: "22"
+            destination_address_prefix: "VirtualNetwork"
+
+      data:
+        rules:
+          - name: "AllowSqlInbound"
+            priority: 100
+            direction: "Inbound"
+            access: "Allow"
+            protocol: "Tcp"
+            source_address_prefix: "VirtualNetwork"
+            destination_port_range: "1433"
+            destination_address_prefix: "VirtualNetwork"
+
+          - name: "DenyInternetOutbound"
+            priority: 4000
+            direction: "Outbound"
+            access: "Deny"
+            protocol: "*"
+            source_address_prefix: "VirtualNetwork"
+            destination_port_range: "*"
+            destination_address_prefix: "Internet"
+
+    prod:
+      app:
+        rules:
+          - name: "AllowHTTPSInbound"
+            priority: 100
+            direction: "Inbound"
+            access: "Allow"
+            protocol: "Tcp"
+            source_address_prefix: "AzureLoadBalancer"
+            destination_port_range: "443"
+            destination_address_prefix: "VirtualNetwork"
+
+          - name: "DenyAllOtherInbound"
+            priority: 4000
+            direction: "Inbound"
+            access: "Deny"
+            protocol: "*"
+            source_address_prefix: "*"
+            destination_port_range: "*"
+            destination_address_prefix: "*"
+
 adminGroupAccess:
   - name: "GitHub CI/CD Service Principal"
     principalId: "object-id-of-your-github-sp"
