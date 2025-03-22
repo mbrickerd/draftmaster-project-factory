@@ -24,7 +24,7 @@ jobs:
         id: versioning
         uses: mathieudutour/github-tag-action@v6.1
         with:
-          github_token: ${{ secrets.GH_PAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: patch
           release_branches: main
 
@@ -42,7 +42,7 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: docs.yml
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           inputs: '{"version": "${{ steps.versioning.outputs.new_tag }}", "changelog": ${{ toJSON(steps.versioning.outputs.changelog) }}}'
 
   apply:
