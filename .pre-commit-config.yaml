@@ -1,0 +1,40 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+files: ^(components|terraform-bootstrap)
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-docstring-first
+        name: "✅ Check docstring"
+      - id: trailing-whitespace
+        name: "✅ Check trailing whitespace"
+      - id: end-of-file-fixer
+        name: "✅ Check end of file"
+      - id: check-yaml
+        name: "✅ Check YAML"
+      - id: check-ast
+        name: "✅ Check AST"
+      - id: debug-statements
+        name: "✅ Check debug statements"
+
+  - repo: https://github.com/terraform-docs/terraform-docs
+    rev: "v0.16.0"
+    hooks:
+      - id: terraform-docs-go
+        name: "Terraform project factory documentation."
+        args: ["components/project-factory/"]
+      - id: terraform-docs-go
+        name: "Terraform storage factory documentation."
+        args: ["components/storage-factory/"]
+      - id: terraform-docs-go
+        name: "Terraform bootstrap documentation."
+        args: ["terraform-bootstrap/"]
+
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.77.1
+    hooks:
+      - id: terraform_fmt
+        name: "🌍 Format Terraform code"
+      - id: terraform_tflint
+        name: "🌍 Terraform tflint"
