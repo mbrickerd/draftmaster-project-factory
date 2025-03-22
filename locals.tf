@@ -39,13 +39,13 @@ locals {
           subscription_type = env.subscription_type
         }
       ]
-      
+
       # Include network configuration if it exists
       network = lookup(config, "network", null)
-      
+
       # Include security configuration if it exists  
       security = lookup(config, "security", null)
-      
+
       # Include any additional top-level configuration keys
       # tags = lookup(config, "tags", {})
       # adminGroupAccess = lookup(config, "adminGroupAccess", null)
