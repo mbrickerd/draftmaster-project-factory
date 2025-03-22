@@ -1,5 +1,5 @@
-module "terraform_containers" {
-  source = "git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/storage-container?ref=82ef4f2b0bec8d2b608a18197ca941d986264987"
+module "terraform_storage_containers" {
+  source = "git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/storage-container?ref=1c15e1bdf86e0b20b6a2669cf860ad16265dd5fd"
 
   for_each = {
     for env in var.environments : env.name => env

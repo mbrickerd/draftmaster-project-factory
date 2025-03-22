@@ -3,4 +3,14 @@ locals {
   container_names = {
     for env in var.environments : env.name => "${var.project_name}-${env.name}-state"
   }
+
+  non_prod_environments = [
+    for env in var.environments : env.name
+    if env.subscription_type == "non_prod"
+  ]
+
+  prod_environments = [
+    for env in var.environments : env.name
+    if env.subscription_type == "prod"
+  ]
 }

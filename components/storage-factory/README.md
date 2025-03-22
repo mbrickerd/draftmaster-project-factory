@@ -14,7 +14,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_terraform_containers"></a> [terraform\_containers](#module\_terraform\_containers) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/storage-container | 82ef4f2b0bec8d2b608a18197ca941d986264987 |
+| <a name="module_terraform_storage_containers"></a> [terraform\_storage\_containers](#module\_terraform\_storage\_containers) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/storage-container | 1c15e1bdf86e0b20b6a2669cf860ad16265dd5fd |
 
 ## Resources
 
@@ -29,5 +29,8 @@ No resources.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_non_prod_storage_containers"></a> [non\_prod\_storage\_containers](#output\_non\_prod\_storage\_containers) | A mapping of non-production storage containers. |
+| <a name="output_prod_storage_containers"></a> [prod\_storage\_containers](#output\_prod\_storage\_containers) | A mapping of production storage containers. |
 <!-- END_TF_DOCS -->

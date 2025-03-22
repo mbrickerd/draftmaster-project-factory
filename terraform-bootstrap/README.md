@@ -14,10 +14,10 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/resource-group | 82ef4f2b0bec8d2b608a18197ca941d986264987 |
-| <a name="module_storage_account"></a> [storage\_account](#module\_storage\_account) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/storage-account | 82ef4f2b0bec8d2b608a18197ca941d986264987 |
-| <a name="module_storage_container_mgmt_state"></a> [storage\_container\_mgmt\_state](#module\_storage\_container\_mgmt\_state) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/storage-container | 82ef4f2b0bec8d2b608a18197ca941d986264987 |
-| <a name="module_storage_container_project_factory_state"></a> [storage\_container\_project\_factory\_state](#module\_storage\_container\_project\_factory\_state) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/storage-container | 82ef4f2b0bec8d2b608a18197ca941d986264987 |
+| <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/resource-group | 1c15e1bdf86e0b20b6a2669cf860ad16265dd5fd |
+| <a name="module_storage_account"></a> [storage\_account](#module\_storage\_account) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/storage-account | 1c15e1bdf86e0b20b6a2669cf860ad16265dd5fd |
+| <a name="module_storage_container_mgmt_state"></a> [storage\_container\_mgmt\_state](#module\_storage\_container\_mgmt\_state) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/storage-container | 1c15e1bdf86e0b20b6a2669cf860ad16265dd5fd |
+| <a name="module_storage_container_project_factory_state"></a> [storage\_container\_project\_factory\_state](#module\_storage\_container\_project\_factory\_state) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/storage-container | 1c15e1bdf86e0b20b6a2669cf860ad16265dd5fd |
 
 ## Resources
 
