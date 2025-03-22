@@ -1,0 +1,78 @@
+name: Project Factory CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  check-skip:
+    name: Scan Commit
+    runs-on: ubuntu-latest
+    outputs:
+      skip: ${{ steps.skip-check.outputs.skip }}
+    steps:
+      - name: Skip CI Check
+        uses: saulmaldonado/skip-workflow@v1
+        id: skip-check
+        with:
+          phrase: '[skip ci]'
+          github-token: ${{ secrets.GH_PAT }}
+
+  validate:
+    name: Validate Terraform
+    needs: check-skip
+    if: ${{ needs.check-skip.outputs.skip != 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.11.2"
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Validate Bootstrap
+        run: |
+          cd terraform-bootstrap
+          terraform init -backend=false
+          terraform validate
+
+      - name: Terraform Validate Main
+        run: |
+          terraform init -backend=false
+          terraform validate
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v3
+        with:
+          tflint_version: latest
+
+      - name: Run TFLint
+        run: |
+          tflint --init
+          tflint --recursive
+
+  security:
+    name: Security Scan
+    needs: [check-skip, validate]
+    if: ${{ needs.check-skip.outputs.skip != 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: .
+          framework: terraform
+          soft_fail: true

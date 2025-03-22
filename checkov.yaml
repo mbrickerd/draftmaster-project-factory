@@ -1,0 +1,11 @@
+directory: .
+compact: true
+quiet: true
+framework: terraform
+skip-check:
+  - CKV_AZURE_33
+  - CKV_AZURE_206
+  - CKV2_AZURE_21
+  - CKV2_AZURE_33
+  - CKV2_AZURE_38
+  - CKV2_AZURE_40
