@@ -34,7 +34,7 @@ jobs:
       - name: Create branch
         uses: peterjgrainger/action-create-branch@v2.4.0
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           branch: "docs/update-for-${{ inputs.version }}"
           sha: ${{ github.sha }}
@@ -54,13 +54,13 @@ jobs:
           git-push-user-name: "github-actions[bot]"
           git-push-user-email: "github-actions[bot]@users.noreply.github.com"
           git-commit-message: "docs: Update module documentation for ${{ inputs.version }} [skip ci]"
-          git-push-token: ${{ secrets.GH_PAT }}
+          git-push-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Pull Request
         id: create-pr
         uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           branch: "docs/update-for-${{ inputs.version }}"
           base: main
           delete-branch: true
@@ -80,13 +80,13 @@ jobs:
         if: steps.create-pr.outputs.pull-request-number
         uses: hmarr/auto-approve-action@v3
         with:
-          github-token: ${{ secrets.GH_PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ steps.create-pr.outputs.pull-request-number }}
 
       - name: Enable auto-merge
         if: steps.create-pr.outputs.pull-request-number
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ steps.create-pr.outputs.pull-request-number }}
           merge-method: squash
