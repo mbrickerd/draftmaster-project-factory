@@ -14,8 +14,8 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_non_prod_resource_groups"></a> [non\_prod\_resource\_groups](#module\_non\_prod\_resource\_groups) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/resource-group | 82ef4f2b0bec8d2b608a18197ca941d986264987 |
-| <a name="module_prod_resource_groups"></a> [prod\_resource\_groups](#module\_prod\_resource\_groups) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/resource-group | 82ef4f2b0bec8d2b608a18197ca941d986264987 |
+| <a name="module_non_prod_resource_groups"></a> [non\_prod\_resource\_groups](#module\_non\_prod\_resource\_groups) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/resource-group | 1c15e1bdf86e0b20b6a2669cf860ad16265dd5fd |
+| <a name="module_prod_resource_groups"></a> [prod\_resource\_groups](#module\_prod\_resource\_groups) | git::https://github.com/mbrickerd/terraform-azure-modules.git//modules/resource-group | 1c15e1bdf86e0b20b6a2669cf860ad16265dd5fd |
 
 ## Resources
 
@@ -33,5 +33,8 @@ No resources.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_non_prod_resource_groups"></a> [non\_prod\_resource\_groups](#output\_non\_prod\_resource\_groups) | The resource group objects for non-production environments. |
+| <a name="output_prod_resource_groups"></a> [prod\_resource\_groups](#output\_prod\_resource\_groups) | The resource group objects for the production environment. |
 <!-- END_TF_DOCS -->
