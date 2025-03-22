@@ -1,0 +1,25 @@
+projectGroupName: "draftmaster"
+location: "westeurope"
+
+environments:
+  - name: "dev"
+    subscription_type: "non_prod"
+  - name: "tst"
+    subscription_type: "non_prod"
+  - name: "prd"
+    subscription_type: "prod"
+
+subscriptions:
+  non_prod: "c95f7219-0fbc-4550-bcbb-14d38b9af10b"
+  prod: "68d2caca-8b6d-48d1-9cb5-5345c3ac34d1"
+
+adminGroupAccess:
+  - name: "GitHub CI/CD Service Principal"
+    principalId: "object-id-of-your-github-sp"
+    role: "Contributor"
+
+projectGroupAccess:
+  - name: "Development Team"
+    principalId: "dev-team-group-id"
+    role: "Contributor"
+    environments: ["dev", "tst"]
