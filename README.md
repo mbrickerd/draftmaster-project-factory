@@ -1,6 +1,6 @@
 # draftmaster-project-factory
 
-This repository houses the DraftMaster Project Factory, a comprehensive infrastructure-as-code solution for provisioning and managing foundational Azure resources. The Project Factory is designed to create consistent and standardized baseline resources for any Azure project, establishing the groundwork for further development.
+This repository houses the DraftMaster Project Factory, a comprehensive infrastructure-as-code solution for provisioning and managing foundational Azure resources. The Project Factory is designed to create consistent and standardised baseline resources for any Azure project, establishing the groundwork for further development.
 
 The Project Factory automates the creation of essential resources including resource groups per environment, storage containers for Terraform state management, and necessary IAM configurations. It implements a structured approach to infrastructure provisioning, ensuring consistent deployment patterns across multiple projects.
 
@@ -9,7 +9,7 @@ The Project Factory automates the creation of essential resources including reso
 - **Standardization**: Consistent foundational resources across all DraftMaster projects
 - **Automation**: Streamlined project bootstrapping process
 - **Separation of Concerns**: Clear distinction between foundational infrastructure and project-specific resources
-- **Governance**: Centralized management of project environments and permissions
+- **Governance**: Centralised management of project environments and permissions
 - **Reproducibility**: Consistent infrastructure deployment across development, testing, and production environments
 
 ## Getting Started
@@ -122,7 +122,7 @@ permissions:
 ### Deploying a New Project
 
 1. Create a new project definition in the `projects/` directory
-2. Initialize and apply the Terraform configuration:
+2. Initialise and apply the Terraform configuration:
 
 ```bash
 terraform init
